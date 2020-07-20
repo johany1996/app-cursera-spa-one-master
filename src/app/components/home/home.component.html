@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="jumbotron">
+        <h1 class="display-4">Hola Mundo, Soy {{ nombre }}!</h1>
+        <p class="lead">Tareas calificadas por los compañeros: Evaluación del proyecto - Módulo 1</p>
+        <span><b>Desarrollo de páginas con Angular | Semana 1</b></span>
+        <hr class="my-4">
+
+        <form>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Nueva Tarea</label>
+                <input type="text" class="form-control" #tarea>
+            </div>
+
+            <button type="submit" (click)="guardar(tarea.value)" class="btn btn-primary">Agregar</button>
+        </form>
+        <ul class="list-group mt-4">
+            <app-items *ngFor="let t of tareas" [tarea]="t"></app-items>
+
+        </ul>
+
+    </div>
+</div>
