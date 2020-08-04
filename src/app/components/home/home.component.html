@@ -13,10 +13,14 @@
 
             <button type="submit" (click)="guardar(tarea.value)" class="btn btn-primary">Agregar</button>
         </form>
+        <hr>
+        <label>1. Debe verse en un componente, el uso de un EventEmitter que sea decorado con @Output.</label>
+        <app-propagador (propagar)="procesaPropagar($event)">
+        </app-propagador>
         <ul class="list-group mt-4">
             <app-items *ngFor="let t of tareas" [tarea]="t"></app-items>
 
         </ul>
-
+        <app-form></app-form>
     </div>
 </div>

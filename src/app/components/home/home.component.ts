@@ -8,7 +8,7 @@ import { Tareas } from '../../tareas';
 })
 export class HomeComponent implements OnInit {
   // tslint:disable-next-line: no-inferrable-types
-  nombre: string = 'Johany Armando Cruz';
+  nombre: string = 'Davian Ascanio';
   tareas: Tareas[];
   constructor() {
     this.tareas = [];
@@ -22,6 +22,9 @@ export class HomeComponent implements OnInit {
     this.tareas.push({ tarea: item});
 
     return false;
+  }
+  procesaPropagar(mensaje) {
+    alert(mensaje);
   }
 
 }

@@ -1,0 +1,19 @@
+<form class="container" novalidate (ngSubmit)="onSubmit()" [formGroup]='user'>
+    <label>
+         <span>Full name</span>
+         <input type="text" placeholder="Your full name" formControlName="name">
+       </label>
+    <label>
+         <span>Email address</span>
+         <input type="password" placeholder="Your passwornd" formControlName="password">
+       </label>
+    <label>
+         <span>Confirm address</span>
+         <input type="password" placeholder="Confirm your password" formControlName="passwordRepeat">
+       </label>
+
+    <button type="submit" [disabled]="user.invalid">Sign up</button>
+</form>
+<div class="error" *ngIf="user.get('name').hasError('required') && user.get('name').touched">
+    Nombre requerido
+</div>
