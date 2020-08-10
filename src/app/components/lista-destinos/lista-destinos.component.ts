@@ -1,8 +1,9 @@
 import { Component, EventEmitter, Output, OnInit } from '@angular/core';
 import { DestinoViaje } from './../../models/destino-viaje.model';
-import { DestinosApiClient } from './../../models/destinos-api-client.model';
+import { DestinosApiClient } from './../../models/destino-api-client.model';
 import { Store } from '@ngrx/store';
 import {AppState} from './../../app.module';
+
 @Component({
   selector: 'app-lista-destinos',
   templateUrl: './lista-destinos.component.html',
@@ -12,6 +13,7 @@ import {AppState} from './../../app.module';
 export class ListaDestinosComponent implements OnInit {
   @Output() onItemAdded: EventEmitter<DestinoViaje>;
   updates:string[];
+
   constructor(
       private destinosApiClient:DestinosApiClient,
       private store: Store<AppState>
@@ -19,6 +21,7 @@ export class ListaDestinosComponent implements OnInit {
     this.onItemAdded = new EventEmitter();
     this.updates = [];
   }
+
   ngOnInit() {
     this.store.select(state => state.destinos.favorito)
       .subscribe(data => {
@@ -28,10 +31,12 @@ export class ListaDestinosComponent implements OnInit {
         }
       });
   }
+
   agregado(d:DestinoViaje) {
     this.destinosApiClient.add(d);
     this.onItemAdded.emit(d);
   }
+
   elegido(d:DestinoViaje) {
     this.destinosApiClient.elegir(d);
   }

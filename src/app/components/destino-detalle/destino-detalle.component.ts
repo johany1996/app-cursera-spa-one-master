@@ -1,7 +1,9 @@
-import { Component, OnInit, InjectionToken, Inject } from '@angular/core';
-import { DestinosApiClient } from './../../models/destinos-api-client.model';
-import { DestinoViaje } from './../../models/destino-viaje.model';
+import { Component, OnInit} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { DestinosApiClient } from 'src/app/models/destino-api-client.model';
+import { DestinoViaje } from 'src/app/models/destino-viaje.model';
+import { Store } from '@ngrx/store';
+import { AppState } from 'src/app/app.module';
 
 @Component({
   selector: 'app-destino-detalle',
@@ -10,14 +12,13 @@ import { ActivatedRoute } from '@angular/router';
   providers: [DestinosApiClient]
 })
 export class DestinoDetalleComponent implements OnInit {
-  destino:DestinoViaje;
+  destino: DestinoViaje;
 
-  // constructor(private route: ActivatedRoute, private destinosApiClient: DestinosApiClient) {}
   constructor(private route: ActivatedRoute, private destinosApiClient: DestinosApiClient) {}
 
   ngOnInit() {
-	  let id = this.route.snapshot.paramMap.get('id');
-      this.destino = this.destinosApiClient.getById(id);
+    const id = this.route.snapshot.paramMap.get('id');
+    this.destino = this.destinosApiClient.getById(id);
   }
 
 }

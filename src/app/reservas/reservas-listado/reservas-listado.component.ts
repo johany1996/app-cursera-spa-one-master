@@ -12,4 +12,5 @@ export class ReservasListadoComponent implements OnInit {
 
   ngOnInit() {
   }
+
 }
